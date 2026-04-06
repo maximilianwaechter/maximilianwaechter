@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Max Waechter | Geospatial analysis, cartography, and interactive web mapping portfolio."
+  />
+  <meta name="author" content="Max Waechter" />
+  <title>Max Waechter | GIS Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg: #f8f9fb;
+      --surface: #ffffff;
+      --surface-2: #f1f4f8;
+      --text: #1f2937;
+      --muted: #5f6b7a;
+      --line: #dbe2ea;
+      --accent: #1f5f8b;
+      --accent-dark: #154766;
+      --shadow: 0 10px 30px rgba(31, 41, 55, 0.08);
+      --radius: 18px;
+      --max-width: 1100px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: 0.2s ease;
+    }
+
+    a:hover {
+      color: var(--accent-dark);
+    }
+
+    .container {
+      width: min(92%, var(--max-width));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      background: #ffffff;
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+
+    .brand {
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      color: var(--text);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      padding: 5rem 0 3rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.9fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      margin: 0 0 1rem;
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-text p {
+      max-width: 60ch;
+      margin: 0 0 1rem;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.85rem 1.2rem;
+      border-radius: 999px;
+      font-weight: 600;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dark);
+      color: #fff;
+    }
+
+    .btn-secondary {
+      background: #fff;
+      color: var(--text);
+      border-color: var(--line);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hero-card {
+      background: linear-gradient(145deg, #ffffff, #eef3f8);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card h3 {
+      margin-top: 0;
+      margin-bottom: 0.75rem;
+      font-size: 1.1rem;
+    }
+
+    .hero-card ul {
+      margin: 0;
+      padding-left: 1.1rem;
+      color: var(--muted);
+    }
+
+    .hero-card li {
+      margin-bottom: 0.5rem;
+    }
+
+    section {
+      padding: 2rem 0 4rem;
+    }
+
+    .section-title {
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title h2 {
+      margin: 0 0 0.5rem;
+      font-size: 1.9rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section-title p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 65ch;
+    }
+
+    .about-box {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1.25rem;
+    }
+
+    .tag {
+      background: var(--surface-2);
+      color: var(--text);
+      border: 1px solid var(--line);
+      padding: 0.5rem 0.8rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .project-card h3 {
+      margin: 0;
+      font-size: 1.25rem;
+    }
+
+    .project-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .project-links {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin-top: auto;
+      padding-top: 0.5rem;
+    }
+
+    .project-link {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .contact-box {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-list {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0 0;
+    }
+
+    .contact-list li {
+      margin-bottom: 0.75rem;
+      color: var(--muted);
+    }
+
+    .site-footer {
+      border-top: 1px solid var(--line);
+      background: #ffffff;
+      padding: 1.5rem 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 860px) {
+      .hero-grid,
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 4rem 0 2rem;
+      }
+
+      .nav {
+        gap: 1rem;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#top">Max Waechter</a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <a href="https://github.com/maximilianwaechter" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/maximilianwaechter/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <h1>Geospatial analysis, cartography, and interactive mapping.</h1>
+          <p>
+            I’m Max Waechter, a geospatial analyst focused on spatial data,
+            urban mapping, and geographic visualization. My work brings together
+            GIS, programming, and design to communicate patterns in infrastructure,
+            cities, and the built environment.
+          </p>
+          <p>
+            This portfolio highlights selected projects in web mapping, geovisualization,
+            and spatial analysis, including interactive GitHub Pages work.
+          </p>
+          <div class="hero-buttons">
+            <a class="btn btn-primary" href="#projects">View Projects</a>
+            <a class="btn btn-secondary" href="https://github.com/maximilianwaechter" target="_blank" rel="noopener noreferrer">GitHub Profile</a>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <h3>Focus Areas</h3>
+          <ul>
+            <li>Interactive web mapping</li>
+            <li>Urban and infrastructure analysis</li>
+            <li>Cartographic design and geovisualization</li>
+            <li>Spatial data workflows in GIS and code</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-title">
+          <h2>About</h2>
+          <p>
+            I’m interested in how maps and spatial analysis can reveal patterns in
+            cities, networks, and environmental systems. My work emphasizes clear
+            communication, strong cartographic design, and practical geospatial methods.
+          </p>
+        </div>
+
+        <div class="about-box">
+          <p>
+            I use spatial thinking to study urban form, infrastructure, and geographic
+            relationships through maps, data analysis, and interactive visual tools.
+            This site serves as a portfolio of projects built for classwork, research,
+            and independent geospatial exploration.
+          </p>
+
+          <div class="skills">
+            <span class="tag">GIS</span>
+            <span class="tag">Cartography</span>
+            <span class="tag">Spatial Analysis</span>
+            <span class="tag">Web Mapping</span>
+            <span class="tag">Python</span>
+            <span class="tag">R</span>
+            <span class="tag">Leaflet</span>
+            <span class="tag">GeoVisualization</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-title">
+          <h2>Selected Projects</h2>
+          <p>
+            These featured projects show the direction of my work in geospatial
+            visualization and interactive mapping.
+          </p>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card">
+            <h3>Power Plant Explorer</h3>
+            <p>
+              An interactive mapping project focused on power plant infrastructure
+              and spatial patterns in energy-related data.
+            </p>
+            <div class="project-links">
+              <a class="project-link" href="https://maximilianwaechter.github.io/power_plant/" target="_blank" rel="noopener noreferrer">Live Site</a>
+              <a class="project-link" href="https://github.com/maximilianwaechter" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <h3>GeoVisual: SEPTA Bus Routes Visualization </h3>
+            <p>
+              A geovisualization project showing SEPTA bus routes in Philadelphia,
+              highlighting urban structure, network form, and cartographic style.
+            </p>
+            <div class="project-links">
+              <a class="project-link" href="https://maximilianwaechter.github.io/geovisual/" target="_blank" rel="noopener noreferrer">Live Site</a>
+              <a class="project-link" href="https://github.com/maximilianwaechter" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <h3>More GIS Work Coming Soon</h3>
+            <p>
+              Additional class projects, spatial analysis labs, and cartographic work
+              can be added here as your portfolio grows.
+            </p>
+            <div class="project-links">
+              <a class="project-link" href="https://github.com/maximilianwaechter" target="_blank" rel="noopener noreferrer">View GitHub</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <h3>Portfolio Expansion</h3>
+            <p>
+              This section can later include projects in raster analysis, spatial statistics,
+              urban analytics, remote sensing, or dashboard design.
+            </p>
+            <div class="project-links">
+              <a class="project-link" href="#contact">Get in Touch</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2>Contact</h2>
+          <p>
+            You can find my work and professional profile through the links below.
+          </p>
+        </div>
+
+        <div class="contact-box">
+          <ul class="contact-list">
+            <li><strong>Name:</strong> Max Waechter</li>
+            <li><strong>GitHub:</strong> <a href="https://github.com/maximilianwaechter" target="_blank" rel="noopener noreferrer">github.com/maximilianwaechter</a></li>
+            <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/maximilianwaechter/" target="_blank" rel="noopener noreferrer">linkedin.com/in/maximilianwaechter</a></li>
+            <li><strong>Email:</strong> tuj97893@temple.edu </li>
+            <li><strong>Location:</strong> Philadelphia, Pennsylvania</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      © 2026 Max Waechter · Built with GitHub Pages
+    </div>
+  </footer>
+
+</body>
+</html>
